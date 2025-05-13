@@ -19,7 +19,7 @@ const UserInput = ({
   register,
   error,
   rules,
-  width
+  width,
 }: InputProps) => {
   return (
     <div className="flex flex-col items-start gap-1">
@@ -29,7 +29,7 @@ const UserInput = ({
         placeholder={placeholder}
         {...register(registerName, rules)}
         className="form-input"
-        style={{ width: `${width}`}}
+        style={{ width: `${width}` }}
       />
       {error && <p className="form-error">{error.message}</p>}
     </div>
