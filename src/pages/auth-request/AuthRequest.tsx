@@ -25,7 +25,6 @@ const AuthRequest = () => {
     console.log('폼 제출 성공!', data);
   };
 
-  const userId = watch('userId');
   const authNumber = watch('authNumber');
   //   const navigate = useNavigate();
 
