@@ -40,7 +40,6 @@ const AuthRequest = () => {
         setShowEnterAuth(true); // 인증번호 입력 필드 보여주기
       } else {
         // 인증정보 기억 돼있으면 바로 개방요청 보내기
-
       }
     } catch {
       alert('인증번호 요청 오류가 발생했습니다.');
