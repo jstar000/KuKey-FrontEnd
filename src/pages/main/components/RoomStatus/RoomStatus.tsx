@@ -1,5 +1,3 @@
-import { Container, RoomName, LockStatus, OpenRequestButton } from './RoomStatus.styles';
-
 type RoomStatusProps = {
   roomName: string;
   lockStatus: string;
@@ -11,11 +9,25 @@ const RoomStatus = ({ roomName, lockStatus }: RoomStatusProps) => {
   };
 
   return (
-    <Container>
-      <RoomName>{roomName}</RoomName>
-      <LockStatus status="{lockStatus}">{lockStatus}</LockStatus>
-      <OpenRequestButton onClick={handleClick}>개방 요청하기</OpenRequestButton>
-    </Container>
+    <div className="bg-beige flex h-[200px] w-[200px] flex-col border-[3px] border-black">
+      <div className="flex w-full justify-center pt-[10px] text-[20px] text-green-600">
+        {roomName}
+      </div>
+      <div
+        className={`flex w-full justify-center pt-[20px] text-[40px] ${
+          lockStatus === '잠금' ? 'text-red-600' : 'text-blue-600'
+        }`}
+      >
+        {lockStatus}
+      </div>
+      <button
+        className="flex cursor-pointer justify-center pt-[30px] text-[20px] text-green-600"
+        onClick={handleClick}
+      >
+        개방 요청하기
+      </button>
+    </div>
   );
 };
+
 export default RoomStatus;
