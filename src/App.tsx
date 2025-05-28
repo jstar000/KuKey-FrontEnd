@@ -1,10 +1,11 @@
-import AuthRequest from "./pages/auth-request/AuthRequest";
+import { RouterProvider } from 'react-router-dom';
+import router from './shared/router/Router';
 
 function App() {
   return (
-    <div>
-      <AuthRequest />
-    </div>
+    <>
+      <RouterProvider router={router} />
+    </>
   );
 }
 
