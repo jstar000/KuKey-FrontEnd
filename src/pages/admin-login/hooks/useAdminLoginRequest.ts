@@ -2,10 +2,12 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { adminLogin } from '../../../shared/apis/admin/auth/admin-login';
 import { ADMIN_ACCESS_TOKEN } from '../../../shared/constants/storageKey';
 import { useNavigate } from 'react-router';
+import { useState } from 'react';
 
 export const useAdminLoginRequest = () => {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const { mutate: adminLoginMutation } = useMutation({
     mutationFn: ({ id, password }: { id: string; password: string }) => {
@@ -15,12 +17,12 @@ export const useAdminLoginRequest = () => {
       if (data.code === 200) {
         localStorage.setItem(ADMIN_ACCESS_TOKEN, data.data.accessToken);
         queryClient.invalidateQueries({ queryKey: ['adminLogin'] });
-        navigate('/admin-home');
+        navigate('/admin');
       } else {
-        alert('관리자 토큰 등록 응답 오류');
+        setIsModalOpen(true);
       }
     },
   });
 
-  return { adminLoginMutation };
+  return { isModalOpen, setIsModalOpen, adminLoginMutation };
 };
